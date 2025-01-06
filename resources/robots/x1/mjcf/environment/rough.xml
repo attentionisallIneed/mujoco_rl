@@ -1,0 +1,28 @@
+<mujoco model="terrain">
+  <statistic center="0 0 0.55" extent="1.1"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="150" elevation="-20"/>
+  </visual>
+  <visual>
+    <rgba com="0.502 1.0 0 0.5" contactforce="0.98 0.4 0.4 1" contactpoint="1.0 1.0 0.6 0.4"/>
+    <scale com="1" forcewidth="0.03" contactwidth="0.01" contactheight="0.02" framewidth="0.05" framelength="0.6"/>
+    <map force="0.005"/>
+  </visual>
+  <asset>
+    <texture name="skybox" type="skybox" builtin="gradient" rgb1="0.2 0.3 0.4" rgb2="0 0 0" width="1000" height="1000" mark="random" random="0.001" markrgb="1 1 1"/>
+    <!-- 定义高度场纹理 -->
+    <texture name="groundplane" type="2d" builtin="flat" rgb1="0.2 0.3 0.4" rgb2="0 0 0" width="1080" height="1080"/>
+    <!-- 定义材质 -->
+    <material name="bumpy" texture="groundplane" texuniform="true" reflectance="0.1"/>
+    <!-- 定义高度场几何数据 -->
+    <hfield name="bumpy_terrain" size="5 5 0.1 0.1" file="heightfield.png"/>
+  </asset>
+
+  <worldbody>
+    <geom name="bumpy_floor" type="hfield" hfield="bumpy_terrain" material="bumpy" conaffinity="7" condim="3" friction="1" pos="0 0 0"/>
+  </worldbody>
+
+</mujoco>

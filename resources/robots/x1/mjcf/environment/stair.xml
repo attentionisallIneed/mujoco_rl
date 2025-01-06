@@ -1,0 +1,45 @@
+<mujoco model="flat">
+  <statistic center="0 0 0.55" extent="1.1"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="150" elevation="-20"/>
+  </visual>
+  <visual>
+    <rgba com="0.502 1.0 0 0.5" contactforce="0.98 0.4 0.4 1" contactpoint="1.0 1.0 0.6 0.4"/>
+    <scale com="1" forcewidth="0.03" contactwidth="0.01" contactheight="0.02" framewidth="0.05" framelength="0.6"/>
+    <map force="0.005"/>
+  </visual>
+  <asset>
+    <texture name="skybox" type="skybox" builtin="gradient" rgb1="0.2 0.3 0.4" rgb2="0 0 0" width="1000" height="1000" mark="random" random="0.001" markrgb="1 1 1"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="1000" height="1000"/>
+    <material name="stair_material" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 10" dir="0 0 -1" directional="true"/>
+    <geom name="floor" size="0 3 .125" pos="0 0 0.04" type="plane" material="groundplane" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up1" type="box" size="0.5 2 0.015" pos="2.0 0 0.03" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up2" type="box" size="0.5 2 0.015" pos="2.2 0 0.06" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up3" type="box" size="0.5 2 0.015" pos="2.4 0 0.09" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up4" type="box" size="0.5 2 0.015" pos="2.6 0 0.12" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up5" type="box" size="0.5 2 0.015" pos="2.8 0 0.15" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up6" type="box" size="0.5 2 0.015" pos="3.0 0 0.18" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up7" type="box" size="0.5 2 0.015" pos="3.2 0 0.21" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up8" type="box" size="0.5 2 0.015" pos="3.4000000000000004 0 0.24" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up9" type="box" size="0.5 2 0.015" pos="3.6 0 0.27" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_up10" type="box" size="0.5 2 0.015" pos="3.8 0 0.3" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down1" type="box" size="0.5 2 0.015" pos="4.0 0 0.27" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down2" type="box" size="0.5 2 0.015" pos="4.2 0 0.24" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down3" type="box" size="0.5 2 0.015" pos="4.4 0 0.21" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down4" type="box" size="0.5 2 0.015" pos="4.6 0 0.18" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down5" type="box" size="0.5 2 0.015" pos="4.8 0 0.15" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down6" type="box" size="0.5 2 0.015" pos="5.0 0 0.12" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down7" type="box" size="0.5 2 0.015" pos="5.2 0 0.09" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down8" type="box" size="0.5 2 0.015" pos="5.4 0 0.06" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down9" type="box" size="0.5 2 0.015" pos="5.6 0 0.03" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+    <geom name="step_down10" type="box" size="0.5 2 0.015" pos="5.8 0 0.0" material="stair_material" conaffinity="7" condim="3" friction="1"/>
+  </worldbody>
+</mujoco>
