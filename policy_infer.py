@@ -56,7 +56,7 @@ class RealtimeController:
                 self.env_cfg.env.num_actions,
                 **policy_cfg
             )
-            loaded_dict = torch.load(model_path, map_location=torch.device('cpu'))
+            loaded_dict = torch.load(model_path, map_location=torch.device('cuda'))
             policy.load_state_dict(loaded_dict["model_state_dict"])
         else:
             jit_name = os.listdir(model_path)
@@ -70,7 +70,7 @@ class RealtimeController:
         yaw_vel_cmd = np.clip(yaw_vel_cmd, -0.6, 0.6)
         self.cmd = [x_vel_cmd, 0.0, yaw_vel_cmd]
 
-    def step(self,  q, dq, quat, omega):
+    def step(self, q, dq, quat, omega):
         x_vel_cmd, y_vel_cmd, yaw_vel_cmd = self.cmd
 
         # Obtain an observation

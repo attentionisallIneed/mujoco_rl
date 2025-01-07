@@ -41,6 +41,13 @@ class MujocoController(RealtimeController):
         # self.tau = np.delete(self.tau, 1)
         self.data.ctrl = self.tau
         mujoco.mj_step(self.model, self.data)
+    
+    def control(self, lin_vel, ang_vel, count):
+        self.cmd = (lin_vel, 0.0, ang_vel)
+        self.count = count
+        q, dq, quat, omega, base_pos = self.get_obs()
+        self.step(q, dq, quat, omega)
+        self.mujoco_step()
 
     def walk(self, dist):
         print('walking')
